@@ -14,7 +14,9 @@ export default function Post() {
           components
         </h2>
         <p className="info">
-          <a className="author">Dadu</a>
+          <a className="author" href="https://www.google.ro/">
+            Dadu
+          </a>
           <time>2024-03-15 16:45</time>
         </p>
         <p className="summary">
