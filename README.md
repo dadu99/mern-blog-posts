@@ -7,14 +7,14 @@ R stands for **React.js** <br>
 N stands fir** Node.js** <br>
 
 
-## Project Setup
+### Project Setup
 
-### Front-end app run from 'client' folder
+## Front-end app run from 'client' folder
 ```sh
 yarn install
 ```
 
-## Run project 
+### Run project 
 
 ```sh
 yarn start
@@ -23,7 +23,7 @@ yarn start
 
 ### Back-end app run  
 
-## Run project from 'api' folder
+# Run project from 'api' folder
 
 ```sh
 nodemon index.js
