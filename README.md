@@ -9,7 +9,7 @@ N stands fir** Node.js** <br>
 
 ### Project Setup
 
-## Front-end app run from 'client' folder
+### Front-end app run from 'client' folder
 ```sh
 yarn install
 ```
@@ -23,7 +23,7 @@ yarn start
 
 ### Back-end app run  
 
-# Run project from 'api' folder
+### Run project from 'api' folder
 
 ```sh
 nodemon index.js
