@@ -2,6 +2,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
+import "./CreatePost.css";
 
 export default function CreatePost() {
   const [title, setTitle] = useState("");
@@ -36,25 +37,30 @@ export default function CreatePost() {
     return <Navigate to={"/"} />;
   }
   return (
-    <form onSubmit={createNewPost}>
-      <input
-        type="title"
-        placeholder={"Title"}
-        value={title}
-        onChange={(ev) => setTitle(ev.target.value)}
-      />
-      <input
-        type="summary"
-        placeholder={"Summary"}
-        value={summary}
-        onChange={(ev) => setSummary(ev.target.value)}
-      />
-      <input type="file" onChange={(ev) => setFiles(ev.target.files)} />
-      <ReactQuill
-        value={content}
-        onChange={(newValue) => setContent(newValue)}
-      ></ReactQuill>
-      <button style={{ marginTop: "5px" }}>Create post</button>
-    </form>
+    <>
+      <div className="create-post">
+        <h2 className="create-post-title">Create new post</h2>
+        <form onSubmit={createNewPost} className="create-post-form">
+          <input
+            type="title"
+            placeholder={"Title"}
+            value={title}
+            onChange={(ev) => setTitle(ev.target.value)}
+          />
+          <input
+            type="summary"
+            placeholder={"Summary"}
+            value={summary}
+            onChange={(ev) => setSummary(ev.target.value)}
+          />
+          <input type="file" onChange={(ev) => setFiles(ev.target.files)} />
+          <ReactQuill
+            value={content}
+            onChange={(newValue) => setContent(newValue)}
+          ></ReactQuill>
+          <button style={{ marginTop: "5px" }}>Create post</button>
+        </form>
+      </div>
+    </>
   );
 }

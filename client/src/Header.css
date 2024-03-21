@@ -1,20 +1,54 @@
 header{
     display:flex;
     justify-content:space-between;
-    margin-top: 20px;
+    margin-top: 0px;
+    padding: 20px;
     margin-bottom: 50px;
     align-items: center;
+    background-color: #37424c;
+    color: #eee;
+    font-size: 16px;
+    border-color: #aaa;
   }
   header a{
     text-decoration:none;
     color: inherit;
   }
   header a.logo{
-    font-weight: bold;
+    font-weight: 300;
     font-size: 1.5rem;
+    margin-left: 8px;
   }
   header nav{
     display:flex;
-    gap: 24px;
+    gap: 8px;
   }
+  .button-header {
+    border:none;
+    width: 150px;
+    height: 45px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 15px;
+    font-weight: 300;
+ 
+  }
+  .create-new, .logout-user {
+    color: #333333;
+    background-color: #cccccc;
+    transition: 0.3s;
+  }
+  .button-header:hover {
+    cursor: pointer;
+    font-weight: bold;
+  }
+  @media only screen and  (max-width: 550px) {
+    header{
+        display:flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+
+
   
