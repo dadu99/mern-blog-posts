@@ -2,10 +2,10 @@ import "./Footer.css";
 
 export default function Footer() {
   return (
-    <footer class="footer-distributed">
-      <div class="footer-left">
-        <p class="footer-links">
-          <a class="link-1" href="#">
+    <footer className="footer-distributed">
+      <div className="footer-left">
+        <p className="footer-links">
+          <a className="link-1" href="#">
             Home
           </a>
 
