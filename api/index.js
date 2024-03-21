@@ -8,6 +8,7 @@ const cookieParser = require("cookie-parser");
 const multer = require("multer");
 const uploadMiddleware = multer({ dest: "uploads/" });
 const fs = require("fs");
+
 const User = require("./models/User");
 const Post = require("./models/Post");
 
@@ -18,6 +19,7 @@ app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 // parse requests of content-type - application
 app.use(express.json());
 app.use(cookieParser());
+app.use("/uploads", express.static(__dirname + "/uploads"));
 
 mongoose.connect(
   "mongodb+srv://baciudarius01:ITl6Nnm2IZGSfwR6@cluster0-mern.qkrl66k.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0-mern"
@@ -75,19 +77,29 @@ app.post("/post", uploadMiddleware.single("file"), async (req, res) => {
   const newPath = path + "." + ext;
   fs.renameSync(path, newPath);
 
-  const { title, summary, content } = req.body;
-  const postDoc = await Post.create({
-    title,
-    summary,
-    content,
-    cover: newPath,
+  const { token } = req.cookies;
+  jwt.verify(token, secret, {}, async (err, info) => {
+    if (err) throw err;
+    const { title, summary, content } = req.body;
+    const postDoc = await Post.create({
+      title,
+      summary,
+      content,
+      cover: newPath,
+      author: info.id,
+    });
+    res.json(postDoc);
   });
-  res.json(postDoc);
 });
 
 //get all post from mongo
 app.get("/post", async (req, res) => {
-  res.json(await Post.find());
+  res.json(
+    await Post.find()
+      .populate("author", ["username"])
+      .sort({ createdAt: -1 })
+      .limit(20)
+  );
 });
 
 app.listen(4000);
