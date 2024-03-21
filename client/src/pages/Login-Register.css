@@ -5,3 +5,13 @@ form.login, form.register{
   form.login h1, form.register h1{
     text-align: center;
   }
+  .login-button {
+    color: white;
+    background-color: #37424c;
+    transition: 0.3s;
+    margin-top: 5px;
+    float: right;
+  }
+  .create-post-button:hover {
+    font-weight: bold;
+  }

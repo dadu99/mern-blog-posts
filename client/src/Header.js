@@ -37,14 +37,18 @@ export default function Header() {
               Create new post
             </Link>
             <a onClick={logout} className="button-header logout-user">
-              {username} Logout{" "}
+              Logout
             </a>
           </>
         )}
         {!username && (
           <>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
+            <Link to="/login" className="button-header create-new">
+              Login
+            </Link>
+            <Link to="/register" className="button-header create-new">
+              Register
+            </Link>
           </>
         )}
       </nav>
