@@ -58,7 +58,7 @@ export default function CreatePost() {
             value={content}
             onChange={(newValue) => setContent(newValue)}
           ></ReactQuill>
-          <button style={{ marginTop: "5px" }}>Create post</button>
+          <button className="create-post-button">Create post</button>
         </form>
       </div>
     </>

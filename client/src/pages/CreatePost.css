@@ -6,3 +6,13 @@
     font-size: 24px;
     font-weight: 300;
   }
+  .create-post-button {
+    color: white;
+    background-color: #37424c;
+    transition: 0.3s;
+    margin-top: 5px;
+    float: right;
+  }
+  .create-post-button:hover {
+    font-weight: bold;
+  }
