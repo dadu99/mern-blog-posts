@@ -85,4 +85,9 @@ app.post("/post", uploadMiddleware.single("file"), async (req, res) => {
   res.json(postDoc);
 });
 
+//get all post from mongo
+app.get("/post", async (req, res) => {
+  res.json(await Post.find());
+});
+
 app.listen(4000);

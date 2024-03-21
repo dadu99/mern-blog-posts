@@ -1,4 +1,6 @@
-export default function Post() {
+import { formatISO9075 } from "date-fns";
+
+export default function Post({ title, summary, cover, content, createdAt }) {
   return (
     <div className="post">
       <div className="image">
@@ -9,22 +11,12 @@ export default function Post() {
       </div>
 
       <div className="texts">
-        <h2>
-          Apple acquires AI startup specializing in overlooking manufacturing
-          components
-        </h2>
+        <h2>{title}</h2>
         <p className="info">
-          <a className="author" href="https://www.google.ro/">
-            Dadu
-          </a>
-          <time>2024-03-15 16:45</time>
+          <a className="author">Dadu</a>
+          <time>{formatISO9075(new Date(createdAt))}</time>
         </p>
-        <p className="summary">
-          Apple has added another AI startup to its acquisition list with
-          Canada-based DarwinAI, which specializes in vision-based tech to
-          observe components during manufacturing to improve efficiency,
-          Bloomberg reported.
-        </p>
+        <p className="summary">{summary}</p>
       </div>
     </div>
   );
