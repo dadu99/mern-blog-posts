@@ -21,17 +21,22 @@ header{
   }
   header nav{
     display:flex;
+    align-items: center;
     gap: 8px;
   }
+  .username-header {
+    font-weight: 300;
+    font-size: 20px;
+    font-style: italic;
+
+  }
   .button-header {
-    border:none;
-    width: 160px;
-    height: 45px;
-    padding: 14px;
+    border: none;
+    width: 150px;
+    padding: 8px;
     text-align: center;
     border-radius: 8px;
     font-weight: 300;
- 
   }
   .create-new, .logout-user {
     color: #333333;
@@ -49,6 +54,3 @@ header{
         gap: 12px;
     }
 }
-
-
-  

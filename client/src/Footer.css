@@ -4,7 +4,7 @@
     width: 100%;
     text-align: left;
     font: normal 16px sans-serif;
-    padding: 19px 50px;
+    padding: 16px;
     margin-top: 50px;
   }
   
@@ -17,6 +17,7 @@
 
   .footer-distributed p.footer-links {
     display: flex;
+    justify-content: center;
     font-size: 18px;
     font-weight: bold;
     color: #ffffff;

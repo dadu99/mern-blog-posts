@@ -33,7 +33,6 @@ div.post{
   }
   div.post p.info a.author{
     color:#333;
-    font-weight: 800;
   }
   div.post p.summary{
     margin:10px 0;

@@ -33,6 +33,7 @@ export default function Header() {
       <nav>
         {username && (
           <>
+            <span className="username-header">Hello, {username}</span>
             <Link to="/create" className="button-header create-new">
               Create new post
             </Link>
