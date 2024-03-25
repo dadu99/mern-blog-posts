@@ -8,6 +8,7 @@ const cookieParser = require("cookie-parser");
 const multer = require("multer");
 const uploadMiddleware = multer({ dest: "uploads/" });
 const fs = require("fs");
+require("dotenv").config({ path: "./.env" });
 
 const User = require("./models/User");
 const Post = require("./models/Post");
@@ -21,9 +22,13 @@ app.use(express.json());
 app.use(cookieParser());
 app.use("/uploads", express.static(__dirname + "/uploads"));
 
-mongoose.connect(
-  "mongodb+srv://baciudarius01:ITl6Nnm2IZGSfwR6@cluster0-mern.qkrl66k.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0-mern"
-);
+mongoose.connect(process.env.MONGO_URL, {
+  useNewUrlParser: true,
+});
+
+const db = mongoose.connection;
+db.on("error", (error) => console.error(error));
+db.once("open", () => console.log("Connected to Database"));
 
 app.post("/register", async (req, res) => {
   try {
