@@ -1,18 +1,18 @@
-.create-post{
+.create-post, .edit-post{
     max-width: 800px;
     margin: 0 auto;
   }
-  .create-post-title {
+  .create-post-title, .edit-post-title {
     font-size: 24px;
     font-weight: 300;
   }
-  .create-post-button {
+  .create-post-button, .edit-post-button {
     color: white;
     background-color: #37424c;
     transition: 0.3s;
     margin-top: 5px;
     float: right;
   }
-  .create-post-button:hover {
+  .create-post-button:hover , .edit-post-button:hover {
     font-weight: bold;
   }

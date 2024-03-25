@@ -1,46 +1,56 @@
-import "react-quill/dist/quill.snow.css";
-import { useState } from "react";
-import { Navigate } from "react-router-dom";
-import "./CreatePost.css";
+import { useEffect, useState } from "react";
+import { Navigate, useParams } from "react-router-dom";
 import Editor from "../Editor";
+import "./CreatePost.css";
 
-export default function CreatePost() {
+export default function EditPost() {
+  const { id } = useParams();
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
   const [content, setContent] = useState("");
   const [files, setFiles] = useState("");
   const [redirect, setRedirect] = useState(false);
 
-  async function createNewPost(ev) {
+  useEffect(() => {
+    fetch("http://localhost:4000/post/" + id).then((response) => {
+      response.json().then((postInfo) => {
+        setTitle(postInfo.title);
+        setContent(postInfo.content);
+        setSummary(postInfo.summary);
+      });
+    });
+  }, []);
+
+  async function updatePost(ev) {
+    ev.preventDefault();
+
     const data = new FormData();
     data.set("title", title);
     data.set("summary", summary);
     data.set("content", content);
-    data.set("file", files[0]);
-
-    console.log(files);
-
-    ev.preventDefault();
-
+    data.set("id", id);
+    if (files?.[0]) {
+      data.set("file", files?.[0]);
+    }
     const response = await fetch("http://localhost:4000/post", {
-      method: "POST",
+      method: "PUT",
       body: data,
       credentials: "include",
     });
-    // console.log(await response.json());
     if (response.ok) {
       setRedirect(true);
     }
   }
 
   if (redirect) {
-    return <Navigate to={"/"} />;
+    return <Navigate to={"/post/" + id} />;
   }
+
   return (
     <>
-      <div className="create-post">
-        <h2 className="create-post-title">Create new post</h2>
-        <form onSubmit={createNewPost} className="create-post-form">
+      <div className="edit-post">
+        <h2 className="edit-post-title">Edit post</h2>
+        <form onSubmit={updatePost}>
           <input
             type="title"
             placeholder={"Title"}
@@ -54,8 +64,8 @@ export default function CreatePost() {
             onChange={(ev) => setSummary(ev.target.value)}
           />
           <input type="file" onChange={(ev) => setFiles(ev.target.files)} />
-          <Editor value={content} onChange={setContent} />
-          <button className="create-post-button">Create post</button>
+          <Editor onChange={setContent} value={content} />
+          <button className="edit-post-button">Update post</button>
         </form>
       </div>
     </>
