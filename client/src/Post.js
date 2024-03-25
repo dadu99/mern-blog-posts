@@ -1,29 +1,34 @@
-export default function Post() {
+import { formatISO9075 } from "date-fns";
+import "./Post.css";
+import { Link } from "react-router-dom";
+export default function Post({
+  _id,
+  title,
+  summary,
+  cover,
+  content,
+  createdAt,
+  author,
+}) {
   return (
     <div className="post">
       <div className="image">
-        <img
-          src="https://techcrunch.com/wp-content/uploads/2022/07/GettyImages-1235254642.jpg?w=430&h=230&crop=1"
-          alt="post"
-        ></img>
+        <Link to={`/post/${_id}`}>
+          <img src={"http://localhost:4000/" + cover} alt="post"></img>
+        </Link>
       </div>
 
       <div className="texts">
-        <h2>
-          Apple acquires AI startup specializing in overlooking manufacturing
-          components
-        </h2>
+        <Link to={`/post/${_id}`}>
+          <h2>{title}</h2>
+        </Link>
+
         <p className="info">
-          <a className="author" href="https://www.google.ro/">
-            Dadu
-          </a>
-          <time>2024-03-15 16:45</time>
+          <a className="author">{author.username}</a>
+          <time>{formatISO9075(new Date(createdAt))}</time>
         </p>
         <p className="summary">
-          Apple has added another AI startup to its acquisition list with
-          Canada-based DarwinAI, which specializes in vision-based tech to
-          observe components during manufacturing to improve efficiency,
-          Bloomberg reported.
+          {summary.length > 145 ? `${summary.substring(0, 145)}...` : summary}
         </p>
       </div>
     </div>

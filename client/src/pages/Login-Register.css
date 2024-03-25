@@ -1,0 +1,17 @@
+form.login, form.register{
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  form.login h1, form.register h1{
+    text-align: center;
+  }
+  .login-button {
+    color: white;
+    background-color: #37424c;
+    transition: 0.3s;
+    margin-top: 5px;
+    float: right;
+  }
+  .create-post-button:hover {
+    font-weight: bold;
+  }
