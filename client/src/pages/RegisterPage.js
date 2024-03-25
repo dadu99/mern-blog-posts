@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import "./Login-Register.css";
 export default function RegisterPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -34,7 +34,7 @@ export default function RegisterPage() {
         value={password}
         onChange={(ev) => setPassword(ev.target.value)}
       />
-      <button>Register</button>
+      <button className="login-button">Register</button>
     </form>
   );
 }

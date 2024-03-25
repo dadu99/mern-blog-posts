@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "./UserContext";
+import "./Header.css";
 
 export default function Header() {
   const { setUserInfo, userInfo } = useContext(UserContext);
@@ -32,14 +33,23 @@ export default function Header() {
       <nav>
         {username && (
           <>
-            <Link to="/create">Create new post</Link>
-            <a onClick={logout}>Logout ({username})</a>
+            <span className="username-header">Hello, {username}</span>
+            <Link to="/create" className="button-header create-new">
+              Create new post
+            </Link>
+            <a onClick={logout} className="button-header logout-user">
+              Logout
+            </a>
           </>
         )}
         {!username && (
           <>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
+            <Link to="/login" className="button-header create-new">
+              Login
+            </Link>
+            <Link to="/register" className="button-header create-new">
+              Register
+            </Link>
           </>
         )}
       </nav>
