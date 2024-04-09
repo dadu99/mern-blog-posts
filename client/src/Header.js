@@ -28,14 +28,14 @@ export default function Header() {
   return (
     <header>
       <Link to="/" className="logo">
-        MyBlog
+        Mern Blog Posts
       </Link>
       <nav>
         {username && (
           <>
-            <span className="username-header">Hello, {username}</span>
+            <span className="username-header">Welcome, {username}</span>
             <Link to="/create" className="button-header create-new">
-              Create new post
+              New post
             </Link>
             <a onClick={logout} className="button-header logout-user">
               Logout
